@@ -1,10 +1,10 @@
 <?php
 
+use App\Http\Controllers\AppController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-  return view('app');
-});
+Route::get('/', [AppController::class, 'index']);
+
 
 // Instead of using Sanctum (or something similar) for API authentication,
 // we are using the built-in Laravel session authentication system.

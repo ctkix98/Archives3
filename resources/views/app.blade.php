@@ -1,6 +1,6 @@
 @extends('layouts.vue')
 
-@section('title', 'Test Vue')
+@section('title', 'Histoire interactive')
 
 @section('app')
   @vite(['resources/js/app.js'])
