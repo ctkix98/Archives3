@@ -1,19 +1,22 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StoriesController;
+use App\Http\Controllers\ChaptersController;
+use App\Http\Controllers\ChoicesController;
 
-Route::prefix('api/v1/')->group(function () {
-  Route::get('/test', function () {
-    return response()->json(['message' => 'Hello, World from api!']);
-  });
+Route::prefix('v1')->group(function () {
+    // STORIES
+    Route::get('/stories', [StoriesController::class, 'index']);
+    Route::get('/stories/{id}', [StoriesController::class, 'show']);
+    Route::post('/stories', [StoriesController::class, 'store']);
 
-  Route::delete('/test', function () {
-    return response()->json(['message' => 'Deleting']);
-  });
+    // CHAPTERS
+    Route::get('/chapters', [ChaptersController::class, 'index']);
+    Route::get('/chapters/{id}', [ChaptersController::class, 'show']);
+    Route::post('/chapters', [ChaptersController::class, 'store']);
 
-  Route::post('/time', function () {
-    $timeClient = request()->input('timeClient', 0);
-    sleep(2); // Simulate a long-running process
-    return response()->json(['timeClient' => $timeClient, 'timeServer' => now()]);
-  });
+    // CHOICES
+    Route::get('/choices', [ChoicesController::class, 'index']);
+    Route::post('/choices', [ChoicesController::class, 'store']);
 });
