@@ -5,7 +5,7 @@ use App\Http\Controllers\StoriesController;
 use App\Http\Controllers\ChaptersController;
 use App\Http\Controllers\ChoicesController;
 
-Route::prefix('v1')->group(function () {
+Route::prefix('/api/v1')->group(function () {
     // STORIES
     Route::get('/stories', [StoriesController::class, 'index']);
     Route::get('/stories/{id}', [StoriesController::class, 'show']);
