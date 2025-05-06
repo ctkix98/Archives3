@@ -9,10 +9,11 @@
   <div>
     <TheHeader />
     <main>
-      <PageExample />
+      <router-view />
     </main>
   </div>
 </template>
+
 
 <style scoped>
 
