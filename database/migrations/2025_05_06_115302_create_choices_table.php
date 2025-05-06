@@ -9,10 +9,13 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('choices', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('chapter_id')->constrained()->onDelete('cascade'); // from
+            $table->string('text');
+            $table->foreignId('target_chapter_id')->constrained('chapters')->onDelete('cascade'); // target
             $table->timestamps();
         });
     }
