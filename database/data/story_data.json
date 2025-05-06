@@ -1,0 +1,107 @@
+{
+  "story": {
+    "title": "Rêve de Jaune",
+    "description": "Suis l'histoire de Lucas, un jeune cycliste qui rêve de participer au Tour de France. À travers des choix bons ou mauvais, il construira son chemin vers son objectif."
+  },
+  "chapters": [
+    {
+      "id": "0",
+      "title": "Introduction",
+      "text": "Tu es Lucas, 17 ans, passionné de cyclisme. Depuis tout petit, tu rêves du Tour de France. Aujourd’hui, tout commence.",
+      "choices": [
+        { "text": "Tu commences par un entraînement structuré", "target": "1" },
+        { "text": "Tu fonces directement dans une course régionale", "target": "2" }
+      ]
+    },
+    {
+      "id": "1",
+      "title": "L'ENTRAÎNEMENT",
+      "text": "Tu suis un programme sérieux avec ton coach. Une équipe junior te propose une place.",
+      "choices": [
+        { "text": "Tu acceptes de rejoindre l'équipe", "target": "3" },
+        { "text": "Tu refuses, préférant rester indépendant", "target": "4" }
+      ]
+    },
+    {
+      "id": "2",
+      "title": "COURSE À FROID",
+      "text": "Tu participes à une course sans préparation. Tu te blesses au genou. Trois mois de repos.",
+      "choices": [
+        { "text": "Retour à l’entraînement", "target": "1" }
+      ]
+    },
+    {
+      "id": "3",
+      "title": "L'ÉQUIPE JUNIOR",
+      "text": "Tu progresses dans l'équipe et participes à une course nationale.",
+      "choices": [
+        { "text": "Tu suis la stratégie de ton coach", "target": "5" },
+        { "text": "Tu attaques seul pour briller", "target": "6" }
+      ]
+    },
+    {
+      "id": "4",
+      "title": "L'INDÉPENDANT",
+      "text": "Tu stagnes sans structure. Personne ne te remarque.",
+      "choices": [
+        { "text": "Tu rejoins finalement un club", "target": "3" }
+      ]
+    },
+    {
+      "id": "5",
+      "title": "COURSE NATIONALE",
+      "text": "Tu aides ton équipe, et on te repère. Tu es invité à un stage espoir.",
+      "choices": [
+        { "text": "Tu t’y prépares sérieusement", "target": "7" },
+        { "text": "Tu fais la fête avant le stage", "target": "8" }
+      ]
+    },
+    {
+      "id": "6",
+      "title": "ATTAQUE PRÉMATURÉE",
+      "text": "Tu craques, ton équipe est furieuse. Tu perds ta place.",
+      "choices": [
+        { "text": "Tu regagnes leur confiance", "target": "3" }
+      ]
+    },
+    {
+      "id": "7",
+      "title": "LE STAGE",
+      "text": "Tu brilles au test et rejoins le Tour de l’Avenir.",
+      "choices": [
+        { "text": "Tu aides ton leader", "target": "9" },
+        { "text": "Tu veux briller seul", "target": "10" }
+      ]
+    },
+    {
+      "id": "8",
+      "title": "LA FÊTE DE TROP",
+      "text": "Tu rates ton stage. Tu n’es pas retenu.",
+      "choices": [
+        { "text": "Tu t'appliques au prochain stage", "target": "7" }
+      ]
+    },
+    {
+      "id": "9",
+      "title": "L'ÉQUIPIER MODELE",
+      "text": "Tu gagnes la confiance du staff. On t’offre un contrat pro.",
+      "choices": [
+        { "text": "Tu rejoins une équipe pro", "target": "11" }
+      ]
+    },
+    {
+      "id": "10",
+      "title": "L’AMBITION MAL PLACÉE",
+      "text": "Tu nuis à ton équipe. Tu apprends l’humilité.",
+      "choices": [
+        { "text": "Tu refais une saison plus sage", "target": "9" }
+      ]
+    },
+    {
+      "id": "11",
+      "title": "LE GRAND DÉPART",
+      "text": "Tu prends le départ du Tour de France. Tous tes efforts ont mené ici. Ton rêve commence maintenant.",
+      "choices": []
+    }
+  ]
+}
