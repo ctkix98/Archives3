@@ -17,5 +17,14 @@
 
 
 <style scoped>
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* ✅ occupe toute la hauteur */
+}
 
+.app-main {
+  flex: 1; /* ✅ pousse le footer en bas */
+  padding: 1rem;
+}
 </style>

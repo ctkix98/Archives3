@@ -61,7 +61,7 @@ const register = async () => {
 
 <style scoped>
 .register-page {
-  min-height: 50vh;
+  min-height: 85vh;;
   background-color: var(--white);
   display: flex;
   justify-content: center;
