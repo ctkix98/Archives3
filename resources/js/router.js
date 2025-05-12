@@ -1,23 +1,40 @@
-// resources/js/router.js
 import { createRouter, createWebHistory } from 'vue-router';
-import ChapterView from '@/pages/ChapterView.vue';
+import LoginPage from '@/pages/LoginPage.vue';
+import RegisterPage from '@/pages/RegisterPage.vue';
+import HomePage from '@/pages/HomePage.vue';
+import { fetchUser, currentUser } from '@/composables/useAuth.js';
 
 const routes = [
+  { path: '/', redirect: '/login' },
+  { path: '/login', component: LoginPage },
+  { path: '/register', component: RegisterPage },
+  { path: '/home', component: HomePage },
   {
-    path: '/',
-    redirect: '/chapter/1' // Commencer par le chapitre 1
-  },
-  {
-    path: '/chapter/:id',
-    name: 'ChapterView',
-    component: ChapterView,
-    props: true
-  }
+  path: '/chapter/:id',
+  name: 'ChapterView',
+  component: () => import('@/pages/ChapterView.vue'),
+  props: true,
+}
 ];
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes,
+});
+
+// Garde de navigation pour protéger /home
+router.beforeEach(async (to, from, next) => {
+  if (currentUser.value === null) await fetchUser();
+
+  const loggedIn = !!currentUser.value;
+
+  if ((to.path === '/home') && !loggedIn) {
+    next('/login');
+  } else if ((to.path === '/login' || to.path === '/register') && loggedIn) {
+    next('/home');
+  } else {
+    next();
+  }
 });
 
 export default router;

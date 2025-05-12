@@ -64,7 +64,20 @@ export function fetchJson(options) {
     fullUrl += '?' + queryString;
   }
 
-  const allHeaders = { ...defaultHeaders, ...headers };
+  // ⛳️ Récupère le token XSRF du cookie (déposé par Sanctum via /sanctum/csrf-cookie)
+  const csrfTokenFromCookie = decodeURIComponent(
+    document.cookie
+      .split('; ')
+      .find(row => row.startsWith('XSRF-TOKEN='))
+      ?.split('=')[1] ?? ''
+  );
+
+  // Ajoute automatiquement le token dans les headers
+  const allHeaders = {
+    ...defaultHeaders,
+    ...headers,
+    'X-XSRF-TOKEN': csrfTokenFromCookie,
+  };
 
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), timeout);
@@ -73,7 +86,13 @@ export function fetchJson(options) {
   const body = theMethod !== 'GET' && data ? JSON.stringify(data) : null;
 
   const request = new Promise((resolve, reject) => {
-    fetch(fullUrl, { method: theMethod, headers: allHeaders, body, signal })
+    fetch(fullUrl, {
+      method: theMethod,
+      headers: allHeaders,
+      body,
+      signal,
+      credentials: 'include', // 🟢 Important pour session/cookie
+    })
       .then(resp => {
         clearTimeout(timeoutId);
         const respClone = resp.clone();
@@ -93,9 +112,9 @@ export function fetchJson(options) {
                 data: null,
               }))
               .catch(() => reject({
-                  status: resp.status,
-                  statusText: 'Error parsing response body',
-                  data: null,
+                status: resp.status,
+                statusText: 'Error parsing response body',
+                data: null,
               }));
           });
       })
