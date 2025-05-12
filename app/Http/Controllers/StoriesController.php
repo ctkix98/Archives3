@@ -12,11 +12,13 @@ class StoriesController extends Controller
         return Story::all();
     }
 
+    // Retourne une histoire avec ses chapitres et les choix associés à chaque chapitre
     public function show($id)
     {
         return Story::with('chapters.choices')->findOrFail($id);
     }
 
+    // Valide les données reçues puis crée une nouvelle histoire
     public function store(Request $request)
     {
         $validated = $request->validate([

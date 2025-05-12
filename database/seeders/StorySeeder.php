@@ -22,6 +22,7 @@ class StorySeeder extends Seeder
                 'description' => $entry['story']['description'] ?? '',
             ]);
 
+            // Permet de relier les IDs temporaires du JSON aux IDs réels en base
             $chapterIdMap = [];
 
             // Crée les chapitres
@@ -31,6 +32,7 @@ class StorySeeder extends Seeder
                     'title' => $chapterData['title'],
                     'text' => $chapterData['text'],
                 ]);
+                // Stocke le mapping des IDs
                 $chapterIdMap[$chapterData['id']] = $chapter->id;
             }
 

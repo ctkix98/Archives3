@@ -12,11 +12,13 @@ class ChaptersController extends Controller
         return Chapter::all();
     }
 
+    // Retourne un chapitre spécifique avec ses choix associés
     public function show($id)
     {
         return Chapter::with('choices')->findOrFail($id);
     }
 
+    // Valide les données reçues puis crée un nouveau chapitre
     public function store(Request $request)
     {
         $validated = $request->validate([

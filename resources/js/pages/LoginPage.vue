@@ -23,7 +23,9 @@ const login = async () => {
 
     if (!res.ok) throw new Error('Email ou mot de passe invalide');
 
+    // Met à jour currentUser dans le store global
     await fetchUser();
+    // Redirige vers la page d'accueil après connexion
     router.push('/home');
   } catch (err) {
     error.value = err.message;

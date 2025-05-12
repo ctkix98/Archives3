@@ -11,5 +11,5 @@ setDefaultHeaders({ 'X-CSRF-TOKEN': csrfToken });
 setDefaultBaseUrl(urlApi);
 
 const app = createApp(App);
-app.use(router); // ✅ Ajouter le router ici
+app.use(router); 
 app.mount('#app');

@@ -6,6 +6,7 @@ const chapter = ref(null);
 const route = useRoute();
 const router = useRouter();
 
+// Fonction pour charger un chapitre à partir de son ID
 const loadChapter = async (id) => {
   const res = await fetch(`/api/v1/chapters/${id}`);
   chapter.value = await res.json();
@@ -15,6 +16,7 @@ onMounted(() => {
   loadChapter(route.params.id);
 });
 
+// Recharge le chapitre si l'ID change (navigations internes sans recharger la page)
 watch(() => route.params.id, (newId) => {
   loadChapter(newId);
 });
