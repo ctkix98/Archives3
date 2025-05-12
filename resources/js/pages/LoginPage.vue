@@ -50,7 +50,7 @@ const login = async () => {
 
 <style scoped>
 .login-page {
-  min-height: 85vh;
+  min-height: 80vh;
   background-color: var(--white);
   display: flex;
   justify-content: center;

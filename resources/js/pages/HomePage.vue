@@ -47,7 +47,7 @@ onMounted(async () => {
 
 <style scoped>
 .homepage {
-  min-height: 100vh;
+  min-height: 80vh;
   background-color: var(--white);
   color: var(--gray-dark);
   display: flex;
