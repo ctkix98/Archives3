@@ -26,9 +26,12 @@ export async function logout() {
       'X-XSRF-TOKEN': decodeURIComponent(getCookie('XSRF-TOKEN')),
     },
     credentials: 'include',
+    
+    
   });
 
   currentUser.value = null;
+  window.location.reload();
 }
 function getCookie(name) {
   return document.cookie
