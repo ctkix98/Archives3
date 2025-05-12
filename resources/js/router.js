@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import LoginPage from '@/pages/LoginPage.vue';
 import RegisterPage from '@/pages/RegisterPage.vue';
 import HomePage from '@/pages/HomePage.vue';
+import NotFound from './pages/NotFound.vue';
 import { fetchUser, currentUser } from '@/composables/useAuth.js';
 
 const routes = [
@@ -14,7 +15,12 @@ const routes = [
   name: 'ChapterView',
   component: () => import('@/pages/ChapterView.vue'),
   props: true,
-}
+},
+{
+    path: '/:pathMatch(.*)*', // match toutes les routes inconnues
+    name: 'NotFound',
+    component: NotFound,
+  },
 ];
 
 const router = createRouter({
