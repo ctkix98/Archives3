@@ -35,14 +35,27 @@ const goToStory = async () => {
 
 <style scoped>
 .story-card {
-  border: 1px solid #ccc;
+  border: 1px solid var(--gray-light);
   padding: 1rem;
   margin-bottom: 1rem;
   border-radius: 8px;
   cursor: pointer;
   transition: 0.3s;
+
 }
 .story-card:hover {
-  background-color: #f3f3f3;
+  background-color: var(--yellow-dark)
+}
+
+h2 {
+  margin: 1rem 0 0.5rem;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--gray-dark);
 }
 </style>
