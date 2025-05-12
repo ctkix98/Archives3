@@ -1,7 +1,7 @@
 <script setup>
   import { ref } from 'vue';
   import TheHeader from '@/components/TheHeader.vue';
-  import PageExample from '@/pages/ChapterView.vue';
+  import TheFooter from './components/TheFooter.vue';
   const n = ref(1);
 </script>
 
@@ -11,6 +11,7 @@
     <main>
       <router-view />
     </main>
+    <TheFooter/>
   </div>
 </template>
 
