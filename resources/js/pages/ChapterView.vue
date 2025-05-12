@@ -26,6 +26,10 @@ const goHome = () => {
 
 <template>
   <div class="chapter-view" v-if="chapter">
+    <div class="chapter-header">
+      <button @click="goHome" class="home-button">🏠 Accueil</button>
+    </div>
+
     <h2 class="chapter-title">{{ chapter.title }}</h2>
     <p class="chapter-text">{{ chapter.text }}</p>
 
@@ -51,7 +55,7 @@ const goHome = () => {
 
 <style scoped>
 .chapter-view {
-  max-width: 700px;
+  min-height: 80vh;
   margin: 2rem auto;
   padding: 2rem;
   background-color: var(--white);
@@ -122,5 +126,21 @@ const goHome = () => {
   text-align: center;
   margin-top: 3rem;
   font-size: 1.2rem;
+}
+
+.home-button {
+  background-color: var(--black);
+  color: var(--white);
+  border: none;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  margin-bottom: 10%;
+}
+
+.home-button:hover {
+  background-color: var(--gray-dark);
 }
 </style>
