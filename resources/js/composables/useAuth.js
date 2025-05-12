@@ -20,9 +20,19 @@ export async function fetchUser() {
 export async function logout() {
   await fetch('/logout', {
     method: 'POST',
-    headers: { 'Accept': 'application/json' },
+    headers: {
+      'Accept': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest',
+      'X-XSRF-TOKEN': decodeURIComponent(getCookie('XSRF-TOKEN')),
+    },
     credentials: 'include',
   });
 
   currentUser.value = null;
+}
+function getCookie(name) {
+  return document.cookie
+    .split('; ')
+    .find(row => row.startsWith(name + '='))
+    ?.split('=')[1];
 }

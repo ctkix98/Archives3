@@ -11,11 +11,12 @@ const router = useRouter();
 const login = async () => {
   error.value = '';
   try {
-    await fetch('/sanctum/csrf-cookie', { credentials: 'include' });
+    //await fetch('/sanctum/csrf-cookie', { credentials: 'include' });
+    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') ?? '';
 
     const res = await fetch('/login', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json', 'X-CSRF-TOKEN': csrfToken },
       credentials: 'include',
       body: JSON.stringify({ email: email.value, password: password.value }),
     });

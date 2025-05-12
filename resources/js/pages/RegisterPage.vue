@@ -3,24 +3,34 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { fetchUser } from '@/composables/useAuth.js';
 
+const name = ref('');
 const email = ref('');
 const password = ref('');
 const error = ref('');
 const router = useRouter();
 
-const login = async () => {
+const register = async () => {
   error.value = '';
   try {
-    await fetch('/sanctum/csrf-cookie', { credentials: 'include' });
+    //await fetch('/sanctum/csrf-cookie', { credentials: 'include' });
+    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') ?? '';
 
-    const res = await fetch('/login', {
+    const res = await fetch('/register', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json',  'X-CSRF-TOKEN': csrfToken },
       credentials: 'include',
-      body: JSON.stringify({ email: email.value, password: password.value }),
+      body: JSON.stringify({
+        name: name.value,
+        email: email.value,
+        password: password.value,
+        password_confirmation: password.value,
+      }),
     });
 
-    if (!res.ok) throw new Error('Email ou mot de passe invalide');
+    if (!res.ok) {
+      const data = await res.json();
+      throw new Error(data.message || 'Inscription échouée');
+    }
 
     await fetchUser();
     router.push('/home');
@@ -32,13 +42,16 @@ const login = async () => {
 
 <template>
   <div>
-    <h1>Connexion</h1>
-    <form @submit.prevent="login">
+    <h1>Créer un compte</h1>
+    <form @submit.prevent="register">
+      <input v-model="name" placeholder="Nom" required />
       <input v-model="email" type="email" placeholder="Email" required />
       <input v-model="password" type="password" placeholder="Mot de passe" required />
-      <button type="submit">Se connecter</button>
+       <input v-model="confirmPassword" type="password" placeholder="Confirmez le mot de passe" required />
+
+      <button type="submit">S’inscrire</button>
       <p v-if="error" style="color:red">{{ error }}</p>
     </form>
-    <router-link to="/register">Créer un compte</router-link>
+    <router-link to="/login">J’ai déjà un compte</router-link>
   </div>
 </template>
