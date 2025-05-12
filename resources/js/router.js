@@ -9,6 +9,12 @@ const routes = [
   { path: '/login', component: LoginPage },
   { path: '/register', component: RegisterPage },
   { path: '/home', component: HomePage },
+  {
+  path: '/chapter/:id',
+  name: 'ChapterView',
+  component: () => import('@/pages/ChapterView.vue'),
+  props: true,
+}
 ];
 
 const router = createRouter({
