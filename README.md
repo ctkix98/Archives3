@@ -29,6 +29,7 @@ cd ton-repo
 ### 2. Installer les dépendances PHP et JS
 ```bash
 composer install
+composer require laravel/sanctum
 npm install
 ```
 
@@ -52,25 +53,19 @@ touch database/database.sqlite
 php artisan key:generate
 ```
 
-### 5. Générer la clé d’application
-```bash
-# Generate application key
-php artisan key:generate
-```
-
-### 6. Lancer l'application
-```bash
-# Generate application key
-composer run dev
-```
-
-### 7. Remplir la base de données des histoires
+### 6. Remplir la base de données des histoires
 ```bash
 # Exécuter les migrations
 php artisan migrate
 
 # Lancer le seeder
 php artisan db:seed --class=StorySeeder
+```
+
+### 7. Lancer l'application
+```bash
+# Generate application key
+composer run dev
 ```
 
 ## Fonctionnalités principales
