@@ -74,12 +74,12 @@ php artisan db:seed --class=StorySeeder
 ```
 
 ## Fonctionnalités principales
-### Création de compte & connexion via Vue + Laravel Breeze
-### Navigation dans une histoire à chapitres et choix
-### API REST versionnée (/api/v1/chapters, /api/v1/stories)
-### Interface responsive avec les couleurs du Tour de France
-### Déconnexion propre (avec window.location.reload() pour les cookies CSRF)
-### Gestion d’erreurs 404 personnalisée
+### ✅ Création de compte & connexion via Vue + Laravel Breeze
+### ✅ Navigation dans une histoire à chapitres et choix
+### ✅ API REST versionnée (/api/v1/chapters, /api/v1/stories)
+### ✅ Interface responsive avec les couleurs du Tour de France
+### ✅ Déconnexion propre (avec window.location.reload() pour les cookies CSRF)
+### ✅ Gestion d’erreurs 404 personnalisée
 
 ## Aperçu du projet
 ### Page de login
